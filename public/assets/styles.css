@@ -1,0 +1,379 @@
+:root{
+  --bg:#fff5c9;
+  --ink:#080037;
+  --card:#fff;
+  --muted:#6b7280;
+  --ring:#e5e7eb;
+  --accent:#ffd166;
+}
+
+/* Reset / base */
+*{box-sizing:border-box}
+html,body{
+  margin:0;padding:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink);background:var(--bg)
+}
+a{color:inherit;text-decoration:none}
+.container{max-width:1200px;margin:0 auto;padding:24px}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--ink);color:#fff;border-bottom:2px solid #000;
+}
+.nav .inner{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:14px 24px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
+.brand .dice{width:24px;height:24px;border-radius:6px;background:#fff;display:grid;place-items:center;color:var(--ink);font-weight:900}
+.nav a{color:#fff;opacity:.95}
+.nav .menu{display:flex;gap:20px;align-items:center}
+.nav .auth{display:flex;gap:12px;align-items:center}
+/* nav specifična dugmad */
+.nav .btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;border:1px solid rgba(255,255,255,.25);color:#fff;
+  padding:8px 14px;border-radius:10px;cursor:pointer;text-decoration:none
+}
+.nav .btn.solid{background:#fff;color:var(--ink);border-color:#fff}
+
+/* PAGE */
+.page-title{font-size:34px;font-weight:800;text-align:center;margin:28px 0 8px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+.input,.select{
+  background:#fff;border:1px solid var(--ring);border-radius:12px;padding:12px 14px;font-size:14px;min-width:240px
+}
+.select{min-width:180px}
+
+/* GRID + CARDS */
+.grid{display:grid;gap:20px;grid-template-columns:repeat(12,1fr)}
+@media (max-width:1200px){ .grid{grid-template-columns:repeat(8,1fr)} }
+@media (max-width:800px){ .grid{grid-template-columns:repeat(4,1fr)} }
+
+.card{
+  grid-column:span 4;background:var(--card);border:2px solid #0001;border-radius:14px;
+  overflow:hidden;box-shadow:0 2px 0 #0002;transition:transform .08s ease, box-shadow .08s ease, border-color .08s ease;cursor:pointer
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 0 #0003;border-color:#0003}
+.card .thumb{height:170px;background:#ddd url('../images/placeholder.jpg') center/cover no-repeat}
+.card .body{padding:14px}
+.card .title{font-weight:700;margin:2px 0 6px}
+.stars{color:#f5b301;font-size:14px;letter-spacing:1px}
+.desc{color:var(--muted);font-size:14px;margin:8px 0 12px;min-height:42px}
+.actions{display:flex;justify-content:flex-start}
+
+/* BADGE */
+.badge{
+  display:inline-block;background:#00000010;border:1px solid #0000001a;border-radius:999px;
+  padding:4px 10px;font-size:12px
+}
+
+/* DETAIL */
+.detail{display:grid;gap:24px;grid-template-columns:1.2fr 2fr;align-items:start}
+.detail .poster{width:100%;aspect-ratio:16/10;border-radius:16px;object-fit:cover;border:2px solid #0001;background:#eee}
+.detail h1{margin:0}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.lead{color:var(--muted)}
+.section{margin-top:18px}
+
+/* FLASH (ako koristiš) */
+.flash-wrap{max-width:1200px;margin:12px auto 0;padding:0 24px}
+.alert{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 14px;border-radius:12px;margin:8px 0;font-weight:600;
+  border:1px solid #0001; box-shadow:0 2px 0 #0002;
+}
+.alert.info{background:#eef2ff;color:#080037}
+.alert.success{background:#ecfdf5;color:#064e3b}
+.alert.error{background:#fef2f2;color:#7f1d1d}
+.alert.warning{background:#fffbeb;color:#78350f}
+.alert .close{background:transparent;border:0;font-size:20px;line-height:1;cursor:pointer;color:inherit}
+
+/* ====== GLOBAL BUTTONS (a.btn i button.btn potpuno jednako) ====== */
+.btn, button.btn, a.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  white-space:nowrap; text-align:center; text-decoration:none;
+  background:var(--accent); border:1px solid #0002; color:inherit;
+  padding:10px 20px; border-radius:10px; font-weight:600; cursor:pointer;
+  box-sizing:border-box; font:inherit; line-height:1.1;
+}
+
+/* hover/active */
+.btn:hover{transform:translateY(-1px);box-shadow:0 3px 0 #0002}
+.btn:active{transform:none;box-shadow:none}
+
+/* Ujednači dugmad na detail stranici – identična širina */
+.section form{margin:0;display:inline}
+.section .btn{width:180px} /* ako želiš fleksibilnije: zameni sa min-width:150px; */
+/* Footer u istom stilu kao header, zalepljen za dno */
+/* === FOOTER FIX === */
+footer.site-footer {
+  position: relative;   /* nema fixed */
+  margin-top: auto;     /* gura ga na dno */
+  width: 100%;
+  text-align: center;
+  padding: 14px 20px;
+  font-size: 14px;
+  background: #fff5c9;
+  color: #000;
+  z-index: 1;           /* opcionalno */
+}
+
+
+.container {
+  flex: 1; /* gura footer na dno */
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+/* ===== Auth (login / register) ===== */
+.auth-wrap{
+  margin: 32px auto 0;
+  max-width: 420px;
+  background: #fff;
+  border: 2px solid #0001;
+  border-radius: 16px;
+  box-shadow: 0 2px 0 #0002;
+  padding: 22px;
+}
+.auth-title{
+  margin: 0 0 12px 0;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.auth-form .form-group{ margin-bottom: 12px; }
+.auth-form label{
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.auth-form .input{
+  width: 100%;
+  min-width: 0;
+}
+.w-full{ width: 100%; }
+.auth-switch{
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 12px;
+}
+.auth-switch a{ text-decoration: underline; }
+
+/* uskladiti dugmad */
+.btn.btn-primary{ background: var(--accent); border-color: #0002; }
+/* ===== Hamburger + Drawer ===== */
+.burger{
+  display:inline-flex; flex-direction:column; gap:4px;
+  width:36px; height:28px; padding:0; border:0; background:transparent; cursor:pointer;
+}
+.burger span{ display:block; height:3px; width:100%; background:#fff; border-radius:2px; }
+
+/* sakrij gornji meni na manjim ekranima (opciono) */
+@media (max-width: 900px){
+  .menu{ display:none; }
+  .burger{ display:inline-flex; }
+}
+/* na desktopu može i burger da ostane, ako želiš ukloni ovaj media query */
+
+/* backdrop iza drawer-a */
+.drawer-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.35);
+  z-index:60; backdrop-filter:saturate(120%) blur(2px);
+}
+
+/* levi panel */
+.drawer{
+  position:fixed; inset:0 auto 0 0; width:280px; max-width:90%;
+  background:#fff5c9; color:var(--ink); border-right:2px solid #0001;
+  transform:translateX(-100%); transition:transform .18s ease-out;
+  z-index:70; display:flex; flex-direction:column; box-shadow:4px 0 0 #0002;
+}
+.drawer.open{ transform:translateX(0); }
+
+/* header u panelu */
+.drawer-head{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 16px; background:var(--ink); color:#fff; border-bottom:2px solid #000;
+}
+.drawer-head .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+.drawer-head .dice{ width:24px; height:24px; border-radius:6px; background:#fff; display:grid; place-items:center; color:var(--ink); font-weight:900; }
+.drawer-close{ background:transparent; border:0; color:#fff; font-size:18px; cursor:pointer; line-height:1; }
+
+/* linkovi u panelu */
+.drawer-nav{
+  padding:12px 10px 16px;
+  display:flex; flex-direction:column; gap:8px;
+}
+.drawer-nav a{
+  display:block;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #00000010;
+  background:#080037;
+  color:white;
+  text-decoration:none;
+}
+.drawer-nav a:hover{ background:#fff5c9; color:black;border:1px solid #fff5c9; }
+.drawer-nav hr{ border:0; border-top:1px solid #eee; margin:10px 0; }
+
+/* blokiraj skrol dok je panel otvoren */
+.no-scroll{ overflow:hidden; }
+/* Centrira brand tačno u sredinu header trake i povećava ga */
+.nav .inner{
+  position: relative;                 /* referenca za apsolutno centriranje */
+}
+
+/* burger ostaje levo; ovo je samo malo odstojanje */
+.burger{ margin-right: 8px; }
+
+/* brand u apsolutnom centru */
+.nav .brand{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  pointer-events: auto;               /* link ostaje klikljiv */
+}
+
+/* uvećaj ikonicu kockice i tekst brenda */
+.nav .brand .dice{ width: 28px; height: 28px; font-size: 16px; }
+.nav .brand span:last-child{ font-size: 20px; letter-spacing: .6px; }
+
+/* malo “diši” na užim ekranima */
+@media (max-width: 700px){
+  .nav .brand span:last-child{ font-size: 18px; }
+  .nav .brand .dice{ width: 26px; height: 26px; }
+}
+/* ===== Admin: igre ===== */
+.admin-wrap{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 1024px){
+  .admin-wrap{ grid-template-columns: 1fr 1fr; }
+}
+
+.admin-form{ padding:16px; }
+.admin-form-title{ margin:0 0 10px 0; font-weight:800; }
+.admin-form .form-group{ margin-bottom:12px; }
+.admin-form .form-row{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap:12px;
+}
+.admin-form .form-row .form-group{ margin:0; }
+.admin-form .input{ width:100%; min-width:0; }
+.admin-form .form-actions{ display:flex; gap:10px; margin-top:6px; }
+.btn.btn-secondary{ background:#fff; border-color:#0003; }
+.btn.btn-sm{ padding:6px 10px; font-weight:600; border-radius:8px; }
+.btn.danger{ background:#fee2e2; border-color:#fecaca; }
+
+.admin-list{ padding:16px; }
+.table-wrap{ overflow:auto; }
+.admin-table{
+  width:100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border:1px solid #0001;
+  border-radius:12px;
+  overflow:hidden;
+}
+.admin-table thead th{
+  background:#f8fafc;
+  text-align:left;
+  padding:10px 12px;
+  font-weight:700;
+  border-bottom:1px solid #0001;
+  font-size:14px;
+}
+.admin-table tbody td{
+  padding:10px 12px;
+  border-bottom:1px solid #0001;
+  vertical-align:middle;
+  font-size:14px;
+}
+.admin-table tbody tr:last-child td{ border-bottom:0; }
+
+.thumb-xs{ height:40px; width:auto; border-radius:6px; border:1px solid #0001; background:#eee; }
+.tags .tag{
+  display:inline-block; margin:0 6px 6px 0; padding:2px 8px;
+  background:#eef; border:1px solid #c7d2fe; border-radius:999px; font-size:12px;
+}
+.admin-table .actions{ display:flex; gap:6px; }
+.muted{ color:var(--muted); }
+/* Utility padding za kartice */
+.card--pad { padding: 18px 22px; }
+@media (min-width: 1200px) {
+  .card--pad { padding: 20px 26px; }
+}
+/* Jedinstven izgled za link i button u wishlisti */
+a.btn--wishlist,
+button.btn--wishlist{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+
+  padding:10px 16px;
+  border-radius:12px;
+  border:1px solid #e8b44d;
+  background:#ffd073;
+  color:#222;
+  text-decoration:none;
+  font-weight:600;
+  line-height:1;          /* izbegava vertikalni "skok" teksta */
+  cursor:pointer;
+  box-shadow:0 1px 0 rgba(0,0,0,.08);
+}
+
+/* zajedničko */
+a.btn--wishlist,
+button.btn--wishlist{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  box-sizing:border-box;
+  height:44px;
+  padding:10px 16px;
+  border-radius:12px;
+  background:#ffd073 !important;
+  border:1px solid #e8b44d !important;
+  color:#222 !important;
+  text-decoration:none !important;
+  font-weight:600;        /* <— ovde ostaje bold za oba */
+  line-height:1;
+  vertical-align:middle;
+  cursor:pointer;
+  box-shadow:0 1px 0 rgba(0,0,0,.08);
+}
+
+button.btn--wishlist{
+  -webkit-appearance:none;
+  appearance:none;
+  background:#ffd073;
+  border:1px solid #e8b44d;
+  /* umesto font: inherit; — samo nasledi familiju i veličinu */
+  font-family:inherit;
+  font-size:inherit;
+  font-weight:600;        /* eksplicitno zadrži bold */
+}
+
+.btn--wishlist:hover
+{
+    transform:translateY(-1px);box-shadow:0 3px 0 #0002
+}
+
+
+.actions{ display:flex; gap:12px; align-items:center; }
+.actions form{ margin:0; display:inline-block; }
+ 
